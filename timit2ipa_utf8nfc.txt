@@ -1,0 +1,69 @@
+epi	
+bcl b	b
+bcl	b
+b	b
+dcl d	d
+dcl	d
+d	d
+gcl g	ɡ
+gcl	ɡ
+g	ɡ
+pcl p	p
+pcl	p
+p	p
+tcl t	t
+tcl	t
+t	t
+kcl k	k
+kcl	k
+k	k
+dx	ɾ
+q	ʔ
+dcl jh	d͡ʒ
+tcl ch	t͡ʃ
+s	s
+sh	ʃ
+z	z
+zh	ʒ
+f	f
+th	θ
+v	v
+dh	ð
+m	m
+n	n
+ng	ŋ
+em	m̩
+en	n̩
+eng	ŋ̩
+nx	ɾ̃
+l	l
+r	ɻ
+w	w
+y	j
+hh	h
+hv	ɦ
+el	l̩
+iy	i
+ih	ɪ
+eh	ɛ
+ey	e͡ɪ
+ae	æ
+aa	ɑ
+aw	a͡ʊ
+ay	a͡ɪ
+ah	ʌ
+ao	ɔ
+oy	ɔ͡ɪ
+ow	o͡ʊ
+uh	ʊ
+uw	u
+ux	ʉ
+er	ɘ˞
+ax	ə
+ix	ɪ̈
+axr	ə˞
+ax-h	ə̥
+jh	d͡ʒ
+ch	t͡ʃ
+h#	(.)
+pau	(.)
