@@ -1,25 +1,43 @@
-/** 
- * this class represents a phone (segment) that can be represented by a single 
- * vector of features. This is true for most phones. Currently feature values are
- * represented by integers e.g. 1,-1 for binary features with zero representing 
- * the special value 'don't care' (undefined). It might be better to use a data 
- * structure that has special value.
- */
-
 import java.io.*;
 import java.util.*;
 
+/** 
+ * Models a phone (segment) that can be represented by a single 
+ * vector of features. This is true for most phones. Currently feature values are
+ * represented by integers e.g. 1,-1 for binary features with zero representing 
+ * the special value 'don't care' (undefined).
+ * @author Tim Kempton
+ * @version 0.1
+ */
+// It might be better to use a data structure for binary features e.g. that explicitly handles the special value.
 public class UniVectorPhone implements Comparable<UniVectorPhone>{
+    /**
+     * Phone label in IPA e.g. d
+     */
     private String label;
+
+    /**
+     * Binary features e.g.  voice=1,  nasal=-1, ...
+     */
     private Map<String,Integer> features;
+
+    /**
+     * The universe set of active articulators: {LABIAL,CORONAL,DORSAL,nasal}
+     */
     public final static Set<String> articUnivSet =
         new HashSet<String>(Arrays.asList("LABIAL","CORONAL","DORSAL","nasal")); // active articulator universe set
 
+    /**
+     * Create the UniVectorPhone with IPA label and binary features
+     */
     public UniVectorPhone(String ipaLabel,Map<String,Integer> featureMap) {
         label = ipaLabel;
         features = featureMap;
     }
-    
+
+    /**
+     * Create the UniVectorPhone with IPA label and binary features and supplying the Chao tone number (1-5 with 5 as high)
+     */
     public UniVectorPhone(String ipaLabel,Map<String,Integer> featureMap, int highFiveTone) {
     	this(ipaLabel,featureMap);
     	int vhigh=-1; int high=-1; int low=-1; int vlow=-1; // together this is the default for tone level 3
@@ -34,20 +52,27 @@ public class UniVectorPhone implements Comparable<UniVectorPhone>{
     	features.put("tone_vlow", vlow);
     }
 
+   /**
+    * Gets the IPA label.
+    * @return this UniVectorPhone's IPA label.
+    */
     public String getIpaLabel() {
         return label;
     }
 
+    /** Get number of features in this UniVectorPhone */
     public int size() {
         return features.size();
     }
-    
+
+    /** Get the value of a particular feature */
     public Integer getFeatureValue(String feature) {
         if (!features.containsKey(feature))  
            System.err.println("Warning: feature "+feature+" not found in uVPhone "+label+" returning null value");
         return features.get(feature);
     }
 
+    /** Get the active articulator set of this UniVectorPhone. */
     public Set<String> getArticSet() {
         Set<String> thisSet = new HashSet<String>(3);
         for (String el : articUnivSet) {
@@ -56,7 +81,7 @@ public class UniVectorPhone implements Comparable<UniVectorPhone>{
         return thisSet;
     }
 
-    /** calculates (2x) feature difference, assumes both phones use same feature system. */
+    /** Calculates (2x) feature difference, assumes both phones use same feature system. */
     public int doubleFeatureDiff(UniVectorPhone otherUVPhone) {
         Set<String> featureSet = features.keySet();
         int cumDiff = 0;
@@ -66,6 +91,7 @@ public class UniVectorPhone implements Comparable<UniVectorPhone>{
         return cumDiff;
     }
 
+    /** Calculates whether this UniVectorPhone is between two other UniVectorPhones in feature space. */
     public boolean isBetweenOrOnBoundary(UniVectorPhone uVPhoneA, UniVectorPhone uVPhoneB) {
         Set<String> featureSet = features.keySet();
         boolean isAllFeaturesBetween = true;
@@ -76,23 +102,27 @@ public class UniVectorPhone implements Comparable<UniVectorPhone>{
             isAllFeaturesBetween = isAllFeaturesBetween && featureValueIsBetweenOrEqual(a,b,n);
         }
         return isAllFeaturesBetween;
-    }       
+    }
 
+    /** Calculates whether a feature value is between two other feature value. */
     private static boolean featureValueIsBetweenOrEqual(int a, int b, int n) {
         boolean result = ((a<=n) && (n<=b)) || ((b<=n) && (n<=a));
         result = result || (a==0) || (b==0) || (n==0); // zero treated as 'don't care'
         return result;
     }
 
+    /** Comparisons are based on whether the UniVectorPhone is syllabic or not (usually to distinguish vowels and consononants). */
     public int compareTo(UniVectorPhone other) {
 		return this.getFeatureValue("syllabic").compareTo(other.getFeatureValue("syllabic"));
     }
-    
+
+    /** Produces a standard string representation. */
     public String toString() {
         //return label+" "+features;
         return label;
     }
 
+    /** Produces a string representation for the SRILM factored language model. */
     public String toSrilmFlmString(){
     	String s = label;
     	for(Map.Entry<String,Integer> entry:features.entrySet()){
@@ -101,7 +131,7 @@ public class UniVectorPhone implements Comparable<UniVectorPhone>{
     	return s;
     }
     
-    /** Produces a string for the -dictionary-align option in SRILM lattice-tool for
+    /** Produces a string representation for the -dictionary-align option in SRILM lattice-tool for
       * phone lattices being transformed into sausages.
       */ 
     public String toSrilmDictionaryString(){
@@ -115,8 +145,8 @@ public class UniVectorPhone implements Comparable<UniVectorPhone>{
     	}
     	return s;
     }
-    
-    /** Produces a string displaying feature values in tsv format */
+
+    /** Produces a string displaying feature values in TSV format */
     /* efficiency saving: could use values rather than entry */
     public String toTsvBodyString(){
     	String s = label;
@@ -125,7 +155,7 @@ public class UniVectorPhone implements Comparable<UniVectorPhone>{
     	}
     	return s;
     }
-    /* (non-Javadoc)
+    /* (non-Javadoc) Overide "hashCode" (probably done by Eclipse automatically)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -138,7 +168,7 @@ public class UniVectorPhone implements Comparable<UniVectorPhone>{
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/* (non-Javadoc) Overide "equals" (probably done by Eclipse automatically)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -163,6 +193,7 @@ public class UniVectorPhone implements Comparable<UniVectorPhone>{
 		return true;
 	}
 
+        /** Demonstration and test */
 	public static void main(String[] args) throws IOException {
         Map<String,Integer> fMap = new LinkedHashMap<String,Integer>();
         fMap.put("syllabic",-1);
@@ -232,6 +263,8 @@ public class UniVectorPhone implements Comparable<UniVectorPhone>{
         System.out.println(uvphList);
         System.out.println(uph3.toSrilmFlmString());
         System.out.println(uph3.toSrilmDictionaryString());
+        System.out.println("The above output is for demonstration and test purposes only and can be ignored.");
+        System.out.println("See the javadoc or source code API on how to use this class in other java programs.");
+
     }
 }
-
