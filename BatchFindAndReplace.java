@@ -1,14 +1,3 @@
-/** BatchFindAndReplace.java version 0.1
- * Warning: this class assumes all Unicode text has the same normalisation e.g. NFC. 
- * in the future, this class may sort out normalisation itself once java 1.6 
- * becomes more widespread
- *
- * input: file.txt findAndReplace.tsv
- *
- *
- */
-//   Copyright 2012 Timothy Kempton
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,13 +7,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/** BatchFindAndReplace.java
+ * When given an input file and a mapping file (in tab separated value format) this program creates a new 
+ * file with all the appropriate find and replace mappings done together in one batch simultaneously. 
+ * If there is a sequence to be found that is a subset of another sequence, the longer sequences takes priority.
+ * It is particularly helpful when dealing with unicode text.
+ * <p>
+ * Warning: this class assumes all Unicode text has the same normalisation e.g. NFC. 
+ * <p>
+ * Example usage (main method): java BatchFindAndReplace helloWorldInTimitAscii.txt timit2ipa_utf8nfc.txt
+ *
+ * @author Timothy Kempton
+ * @version 0.1
+ */
+/* in the future, this class may sort out normalisation itself once java 1.6 
+  becomes more widespread */
 public class BatchFindAndReplace {
+        /**  Mapping from string keys to string values */
 	Map<String, String> rMap;
 
+	/**  Create BatchFindAndReplace object from existing string to string mapping. */
 	public BatchFindAndReplace(Map<String,String> inMap) {
 		rMap = inMap;
 	}
-	
+
+	/**  Create BatchFindAndReplace object from TSV file. */
 	public BatchFindAndReplace(String mapFile) throws IOException {
 		BufferedReader tableFile = new BufferedReader(new FileReader(mapFile));
 		String thisLine = null;
@@ -41,11 +48,7 @@ public class BatchFindAndReplace {
 	}
 	
 	/** Finds the earliest occurring search string (as defined in the objects find/replace table) in the input string.
-	 * If there are more than one match, this method returns the longest string. 
-	 * @param in
-	 * @param fromIndex
-	 * @return
-	 */
+	 * If there are more than one match, this method returns the longest string.*/
 	public String earliestLongestMatch(String in,int fromIndex){
 		Set<String> findSet = rMap.keySet();
 		int minStart = in.length();
@@ -81,11 +84,7 @@ public class BatchFindAndReplace {
 		return longestStr;
 	}
 	
-	/** Performs a batch search and replace (all) process on the input string. 
-	 * 
-	 * @param in
-	 * @return
-	 */
+	/** Performs a batch search and replace (all) process on the input string. */
 	public String processString(String in) {
 		String out="";
 		int beginning = 0;
@@ -119,6 +118,7 @@ public class BatchFindAndReplace {
 		return "BatchFindAndReplace [rMap=" + rMap + "]";
 	}
 
+        /** First parameter is the text file and the second parameter is the mapping file */
 	public static void main(String[] args) throws IOException {
 		String textFile = args[0];
 		String replaceTsvFile = args[1];
