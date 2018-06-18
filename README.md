@@ -1,5 +1,10 @@
 # phonemic-analysis
-This repository contains software related to my PhD "Machine-assisted phonemic analysis"
+
+This repository contains software related to my PhD "Machine-assisted phonemic analysis". One of the main tools is a phonetic distance measure.
+
+## Installation
+
+This software has been tested on Linux.
 
 ## BatchFindAndReplace.java 
 
