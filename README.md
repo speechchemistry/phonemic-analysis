@@ -20,7 +20,7 @@ This will give you the closest phone for each of the phones in an inventory.
 
 Example usage:
 
-`java TestPhone ../resources/ker/kera_components_utf8nfc.tsv ../resources/ces/czech_components_utf8nfc.ts`
+`java TestPhone ../resources/ker/kera_components_utf8nfc.tsv ../resources/ces/czech_components_utf8nfc.tsv`
 
 ## BatchFindAndReplace 
 
