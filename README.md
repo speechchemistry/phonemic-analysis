@@ -4,7 +4,7 @@ This repository contains software related to my PhD "Machine-assisted phonemic a
 
 ## Installation
 
-This software has been tested on Linux.
+Download the realease zip package that includes the binaries and source (click on releases). You can then test one of the tools e.g. in linux terminal type: `java Phone` . Note that in windows power shell you need to force it to use UTF-8 encoding e.g. `java "-Dfile.encoding=utf8" PhoneInventory > PhoneInventory_output.txt`
 
 ## BatchFindAndReplace.java 
 
