@@ -344,10 +344,10 @@ public class PhoneInventory {
       * additional args: feature files, the later files have priority of overiding the first
       * stdout: filter tsv output */
     public static void main(String[] args) throws IOException {
-    	String[] newArgs = {"dataFiles/frenchPeperkampConsonants_utf16nfc.txt",
-    			"../common_resources/hayes_features_utf16nfc.tsv",
-    			"../common_resources/extra_and_override_phone_features_utf16nfc.tsv",
-    			"../common_resources/extra_auto_generated_utf16nfc.tsv"};
+    	String[] newArgs = {"../resources/fra/frenchPeperkampConsonantAllophones_utf8nfc.txt",
+    			"../resources/common/hayes_features_utf16nfc.tsv",
+    			"../resources/common/extra_and_override_phone_features_utf8nfc.tsv",
+    			"../resources/common/extra_auto_generated_utf8nfc.tsv"};
         LinkedList<String> argList = new LinkedList<String>(Arrays.asList(newArgs));
         String phoneComponentsFilename = argList.remove();
         PhoneInventory phInv = new PhoneInventory(phoneComponentsFilename,argList);
