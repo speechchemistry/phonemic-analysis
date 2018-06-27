@@ -2,9 +2,13 @@
 
 This repository contains software related to my PhD "Machine-assisted phonemic analysis". One of the main tools is a phonetic distance measure.
 
+## Prerequisites
+
+This tool requires Java runtime to be installed which often is on most systems. 
+
 ## Installation
 
-This tool requires Java runtime to be installed which often is on most systems. Download the realease zip package that includes the binaries and source (click on releases). 
+Download the realease zip package that includes the binaries and source (click on releases). 
 
 ## Running the tools
 
@@ -12,7 +16,9 @@ In the command line navigate to the "bin" directory e.g. `cd bin` You can then t
 
 ## TestPhone
 
-This will give you the closest phone for each of the phones in an inventory. For example:
+This will give you the closest phone for each of the phones in an inventory. 
+
+Example usage:
 
 `java TestPhone ../resources/ker/kera_components_utf8nfc.tsv ../resources/ces/czech_components_utf8nfc.ts`
 
