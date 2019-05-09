@@ -29,3 +29,7 @@ When given an input file and a mapping file (in tab separated value format) this
 Example usage:
 
 `java BatchFindAndReplace helloWorldInTimitAscii.txt timit2ipa_utf8nfc.txt > helloWorldInIpa_utf8nfc.txt`
+
+## Known Issues
+
+If your Unicode text files contain the UTF-8 preamble (also know as the UTF-8 BOM) it can sometimes cause problems with the software. Current versions of Windows Notepad save text files with the UTF-8 preamble. It is best to use an alternative text editor.  
