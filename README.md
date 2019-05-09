@@ -4,11 +4,11 @@ This repository contains software related to my PhD "Machine-assisted phonemic a
 
 ## Prerequisites
 
-This tool requires Java runtime to be installed which often is on most systems. 
+This tool requires Java runtime to be installed which is available on most platforms. 
 
 ## Installation
 
-Download the realease zip package that includes the binaries and source (click on releases). 
+Download the release zip package that includes the binaries and source (click on releases). 
 
 ## Running the tools
 
