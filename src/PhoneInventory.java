@@ -92,7 +92,7 @@ public class PhoneInventory {
         String [] keyArray = tsvKeys.split("\t");
         String [] valueArray = tsvValues.split("\t");
         for(int i=0;i<keyArray.length;i++) {
-            fMap.put(keyArray[i],new Integer(valueArray[i]));
+            fMap.put(keyArray[i],Integer.valueOf(valueArray[i]));
         }
         return fMap;	
     }
@@ -190,7 +190,7 @@ public class PhoneInventory {
     			phList.add(ph);
     		}
     	}
-    	System.out.print("closestDist=\t"+closestDist+"\t");
+    	//System.out.print("closestDist=\t"+closestDist+"\t");
     	return phList;
     }
 
