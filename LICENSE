@@ -4,7 +4,8 @@ Copyright (c) 2018 Timothy Kempton
 (except the file hayes_features_utf8nfc.tsv a derivative of Bruce Hayes feature
 spreadsheet. Bruce Hayes has kindly allowed me to include this file within this
 software licenced as a whole under the MIT license (permission granted 
-2018-Jul-13)) 
+2018-Jul-13). The DanEllisDtw class is translated from the original Matlab code
+and so is available under the GPL2+ license) 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
