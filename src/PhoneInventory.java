@@ -1,3 +1,5 @@
+package io.github.speechchemistry;
+
 import java.io.*;
 import java.util.*;
 
@@ -25,7 +27,9 @@ public class PhoneInventory {
         boolean isFirstFile = true;
         for(String featureTsvFilename : featureTsvFilenameList) {
             //System.out.println("Constructor: looking at feature file: "+featureTsvFilename);
-            BufferedReader tableFile = new BufferedReader(new FileReader(featureTsvFilename));
+            //I've changed the bit below to read from a resource rather than any old file (I think this helps
+            // with relative paths))
+            BufferedReader tableFile = new BufferedReader(new InputStreamReader(PhoneInventory.class.getResourceAsStream(featureTsvFilename)));
             boolean isFirstLine = true;
             while ((thisLine = tableFile.readLine()) != null) {
                 thisLineArray = thisLine.split("\t",2); // split line into two
@@ -42,8 +46,10 @@ public class PhoneInventory {
             }
             isFirstFile = false;
         }
-        // load in phone inventory from tsv file        
-        BufferedReader tableFile = new BufferedReader(new FileReader(inventoryTsvFilename));
+        // load in phone inventory from tsv file
+        // I've changed the bit below to read from a resource rather than any old file
+        // (I think this helps with relative paths))
+        BufferedReader tableFile = new BufferedReader(new InputStreamReader(PhoneInventory.class.getResourceAsStream(inventoryTsvFilename)));
         thisLine = null;
         thisLineArray = null;
         UniVectorPhone uVPhone= null;
@@ -344,10 +350,10 @@ public class PhoneInventory {
       * additional args: feature files, the later files have priority of overiding the first
       * stdout: filter tsv output */
     public static void main(String[] args) throws IOException {
-    	String[] newArgs = {"../resources/fra/frenchPeperkampConsonantAllophones_utf8nfc.txt",
-    			"../resources/common/hayes_features_utf8nfc.tsv",
-    			"../resources/common/extra_and_override_phone_features_utf8nfc.tsv",
-    			"../resources/common/extra_auto_generated_utf8nfc.tsv"};
+    	String[] newArgs = {"/fra/frenchPeperkampConsonantAllophones_utf8nfc.txt",
+    			"/common/hayes_features_utf8nfc.tsv",
+    			"/common/extra_and_override_phone_features_utf8nfc.tsv",
+    			"/common/extra_auto_generated_utf8nfc.tsv"};
         LinkedList<String> argList = new LinkedList<String>(Arrays.asList(newArgs));
         String phoneComponentsFilename = argList.remove();
         PhoneInventory phInv = new PhoneInventory(phoneComponentsFilename,argList);

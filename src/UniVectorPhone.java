@@ -1,3 +1,5 @@
+package io.github.speechchemistry;
+
 import java.io.*;
 import java.util.*;
 
