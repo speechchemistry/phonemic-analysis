@@ -8,9 +8,7 @@ This tool requires Java to be already installed. For example, for Windows you co
 
 ## Installation
 
-Go to the [list of releases](https://github.com/speechchemistry/phonemic-analysis/releases). Under the latest release at the top of the screen, click on "Assets" then click on the jar file to download it.
-
-If you want to build from source, clone this repository and type `mvn package` (requires Apache Maven).
+Go to the [list of releases](https://github.com/speechchemistry/phonemic-analysis/releases). Under the latest release at the top of the screen, click on "Assets" then click on the jar file to download it. Alternatively, if you want to build from source, clone this repository and type `mvn package` (requires Apache Maven).
 
 ## Running the tools
 
