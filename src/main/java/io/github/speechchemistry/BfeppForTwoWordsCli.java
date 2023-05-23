@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Callable;
+import java.text.Normalizer;
 
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
@@ -34,7 +35,9 @@ public class BfeppForTwoWordsCli implements Callable{
     public Integer call() throws IOException {
         ///String word1 = args[0];
         ///String word2 = args[1];
-        // load in hayes features 	
+        // load in hayes features
+        String word1_nfc = Normalizer.normalize(word1, Normalizer.Form.NFC);
+        String word2_nfc = Normalizer.normalize(word2, Normalizer.Form.NFC);
         LinkedList<String> hayesFiles = new LinkedList<String>(Arrays.asList(
             "/common/hayes/hayes_features_utf8nfc.tsv",
             "/common/hayes/extra_and_override_phone_features_utf8nfc.tsv",
@@ -43,10 +46,10 @@ public class BfeppForTwoWordsCli implements Callable{
         
         String phoneComponentsFilename = "/common/hayes/combined_phone_list_utf8nfc.txt";
         PhoneInventory lang1PhInv = new PhoneInventory(phoneComponentsFilename,hayesFiles);
-        PhoneUtterance lang1PhUtt = new PhoneUtterance(word1, lang1PhInv);
+        PhoneUtterance lang1PhUtt = new PhoneUtterance(word1_nfc, lang1PhInv);
         // create the same big phone inventory for language 2
         PhoneInventory lang2PhInv = new PhoneInventory(phoneComponentsFilename,hayesFiles);
-        PhoneUtterance lang2PhUtt = new PhoneUtterance(word2, lang2PhInv);
+        PhoneUtterance lang2PhUtt = new PhoneUtterance(word2_nfc, lang2PhInv);
 
         //Do a dynamic time warp and print the state transitions
         double[][] diffArray = lang1PhUtt.differenceMatrix(lang2PhUtt);
@@ -55,8 +58,8 @@ public class BfeppForTwoWordsCli implements Callable{
         List<Phone> lang1PhoneList = lang1PhUtt.getPhoneList();
         double totalFeatureErrors = dtw.getTotalCost();
         // most accurate way to calculate number of phones is to count the spaces and add 1
-        int lengthOfWord1 = word1.length() - word1.replaceAll(" ", "").length() +1;
-        int lengthOfWord2 = word2.length() - word2.replaceAll(" ", "").length() +1;
+        int lengthOfWord1 = word1_nfc.length() - word1_nfc.replaceAll(" ", "").length() +1;
+        int lengthOfWord2 = word2_nfc.length() - word2_nfc.replaceAll(" ", "").length() +1;
         // to calculate BFEPP we divide by the longest string (see Kempton(2012) p65)
         double bfepp = 0;
         if (lengthOfWord1>lengthOfWord2) {
@@ -64,7 +67,7 @@ public class BfeppForTwoWordsCli implements Callable{
         } else {
                 bfepp = totalFeatureErrors/lengthOfWord2; 
         }       
-        System.out.println(word1+"\t"+word2+"\t"+bfepp);
+        System.out.println(word1_nfc+"\t"+word2_nfc+"\t"+bfepp);
         return 0;
     }
     
