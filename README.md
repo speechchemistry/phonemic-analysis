@@ -1,6 +1,6 @@
 # phonemic-analysis
 
-This repository contains software related to my PhD "Machine-assisted phonemic analysis". One of the main tools is a phonetic distance measure; BFEPP (Binary Feature Edits Per Phone).
+This repository contains software related to my PhD [Machine-assisted phonemic analysis](http://etheses.whiterose.ac.uk/3122/). One of the main tools is a phonetic distance measure; BFEPP (Binary Feature Edits Per Phone).
 
 ## Prerequisites
 
@@ -12,13 +12,19 @@ Go to the [list of releases](https://github.com/speechchemistry/phonemic-analysi
 
 ## Running the tools
 
-Example for calculating the BFEPP measure between [to] and [po]. In Windows Powershell type:
+Example for calculating the BFEPP measure between [tu] and [du]. In Windows Powershell type:
 
-`java "-Dfile.encoding=utf8" -jar phonemic-analysis-0.5.jar "t o" "p o"`
+`java "-Dfile.encoding=utf8" -jar phonemic-analysis-0.5.jar "t u" "d u"`
 
-in linux you don't need to include the encoding option. You can also run the individual java classes. For example another way of running the BFEPP tool in Linux is: 
+in linux you don't need to include the encoding option. You can also run the individual java classes. For example, another way of running the BFEPP tool in Linux is: 
 
-`java -cp phonemic-analysis-0.5.jar io.github.speechchemistry.BfeppForTwoWordsCli "t o" "p o"`
+`java -cp phonemic-analysis-0.5.jar io.github.speechchemistry.BfeppForTwoWordsCli "t u" "d u"`
+
+The output should be:
+
+`t u     d u     0.5`
+
+This shows that the binary feature edits per phone (BFEPP) score is 0.5. There is one binary feature difference between [t] and [d] which is a change from -voice to +voice. There is no change in binary feature for the vowel. So overall the BFEPP score is 0.5.
 
 ## Known Issues
 
