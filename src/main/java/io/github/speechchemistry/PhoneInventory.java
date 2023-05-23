@@ -351,9 +351,9 @@ public class PhoneInventory {
       * stdout: filter tsv output */
     public static void main(String[] args) throws IOException {
     	String[] newArgs = {"/fra/frenchPeperkampConsonantAllophones_utf8nfc.txt",
-    			"/common/hayes_features_utf8nfc.tsv",
-    			"/common/extra_and_override_phone_features_utf8nfc.tsv",
-    			"/common/extra_auto_generated_utf8nfc.tsv"};
+    			"/common/hayes/hayes_features_utf8nfc.tsv",
+    			"/common/hayes/extra_and_override_phone_features_utf8nfc.tsv",
+    			"/common/hayes/extra_auto_generated_utf8nfc.tsv"};
         LinkedList<String> argList = new LinkedList<String>(Arrays.asList(newArgs));
         String phoneComponentsFilename = argList.remove();
         PhoneInventory phInv = new PhoneInventory(phoneComponentsFilename,argList);

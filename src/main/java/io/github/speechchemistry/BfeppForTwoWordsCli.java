@@ -36,12 +36,12 @@ public class BfeppForTwoWordsCli implements Callable{
         ///String word2 = args[1];
         // load in hayes features 	
         LinkedList<String> hayesFiles = new LinkedList<String>(Arrays.asList(
-            "/common/hayes_features_utf8nfc.tsv",
-            "/common/extra_and_override_phone_features_utf8nfc.tsv",
-            "/common/extra_auto_generated_utf8nfc.tsv"));
+            "/common/hayes/hayes_features_utf8nfc.tsv",
+            "/common/hayes/extra_and_override_phone_features_utf8nfc.tsv",
+            "/common/hayes/extra_auto_generated_utf8nfc.tsv"));
         // load in the big phone inventory 
         
-        String phoneComponentsFilename = "/common/combined_phone_list_utf8nfc.txt";
+        String phoneComponentsFilename = "/common/hayes/combined_phone_list_utf8nfc.txt";
         PhoneInventory lang1PhInv = new PhoneInventory(phoneComponentsFilename,hayesFiles);
         PhoneUtterance lang1PhUtt = new PhoneUtterance(word1, lang1PhInv);
         // create the same big phone inventory for language 2
