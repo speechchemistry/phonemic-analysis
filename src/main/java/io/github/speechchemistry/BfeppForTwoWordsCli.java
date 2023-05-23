@@ -30,6 +30,8 @@ public class BfeppForTwoWordsCli implements Callable{
     String word1;
     @Parameters(paramLabel = "word2", description = "Word 2 phonetic transcription in IPA (no tie bars)")
     String word2;
+    @Option(names = { "-f", "--feature-framework" }, defaultValue = "phoible", description = "Feature framework to use: phoible (default) or hayes")
+    String feature_framework = "phoible";
 
     @Override
     public Integer call() throws IOException {
@@ -38,13 +40,23 @@ public class BfeppForTwoWordsCli implements Callable{
         // load in hayes features
         String word1_nfc = Normalizer.normalize(word1, Normalizer.Form.NFC);
         String word2_nfc = Normalizer.normalize(word2, Normalizer.Form.NFC);
-        LinkedList<String> hayesFiles = new LinkedList<String>(Arrays.asList(
-            "/common/hayes/hayes_features_utf8nfc.tsv",
-            "/common/hayes/extra_and_override_phone_features_utf8nfc.tsv",
-            "/common/hayes/extra_auto_generated_utf8nfc.tsv"));
+        LinkedList<String> hayesFiles;
+        String phoneComponentsFilename;
+        if (feature_framework.equals("hayes")) {
+            hayesFiles = new LinkedList<String>(Arrays.asList(
+                "/common/hayes/hayes_features_utf8nfc.tsv",
+                "/common/hayes/extra_and_override_phone_features_utf8nfc.tsv",
+                "/common/hayes/extra_auto_generated_utf8nfc.tsv"));
+            phoneComponentsFilename = "/common/hayes/combined_phone_list_utf8nfc.txt";
+        }
+        else {
+            hayesFiles = new LinkedList<String>(Arrays.asList(
+                    "/common/phoible/phoible_segments_no_multivector_no_ambigous_phones_utf8nfc.tsv"));
+            phoneComponentsFilename = "/common/phoible/phonelist_no_multivector_no_ambiguous_phones_utf8nfc.txt";
+        }
         // load in the big phone inventory 
         
-        String phoneComponentsFilename = "/common/hayes/combined_phone_list_utf8nfc.txt";
+        //String phoneComponentsFilename = "/common/hayes/combined_phone_list_utf8nfc.txt";
         PhoneInventory lang1PhInv = new PhoneInventory(phoneComponentsFilename,hayesFiles);
         PhoneUtterance lang1PhUtt = new PhoneUtterance(word1_nfc, lang1PhInv);
         // create the same big phone inventory for language 2
