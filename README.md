@@ -4,21 +4,21 @@ This repository contains software related to my PhD "Machine-assisted phonemic a
 
 ## Prerequisites
 
-This tool requires Java runtime which is already installed on many systems. 
+This tool requires Java to already installed. For example, for Windows you could download Amazon Corretto 11 directly from https://corretto.aws/downloads/latest/amazon-corretto-11-x64-windows-jdk.msi
 
 ## Installation
 
-Download the release zip package that includes jar file. 
+Download the latest [release file](https://github.com/speechchemistry/phonemic-analysis/releases) that includes the jar file. 
 
 ## Running the tools
 
 Example for calculating the BFEPP measure between [to] and [po]:
 
-`java -cp phonemic-analysis-0.4.jar io.github.speechchemistry.BfeppForTwoWordsCli "t o" "p o"`
+`java -cp phonemic-analysis-0.4.2.jar io.github.speechchemistry.BfeppForTwoWordsCli "t o" "p o"`
 
 Note that in windows power shell you need to force it to use UTF-8 encoding e.g.
 
-`java "-Dfile.encoding=utf8" -cp phonemic-analysis-0.4.jar io.github.speechchemistry.BfeppForTwoWordsCli "t o" "p o"`
+`java "-Dfile.encoding=utf8" -cp phonemic-analysis-0.4.2.jar io.github.speechchemistry.BfeppForTwoWordsCli "t o" "p o"`
 
 ## Known Issues
 
