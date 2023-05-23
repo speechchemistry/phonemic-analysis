@@ -12,13 +12,13 @@ Download the latest [release file](https://github.com/speechchemistry/phonemic-a
 
 ## Running the tools
 
-Example for calculating the BFEPP measure between [to] and [po]:
+Example for calculating the BFEPP measure between [to] and [po]. In Windows Powershell type:
+
+`java "-Dfile.encoding=utf8" -jar phonemic-analysis-0.4.2.jar "t o" "p o"`
+
+in linux you don't need to include the encoding option. You can also run the individual java classes. For example another way of running the BFEPP tool in Linux is: 
 
 `java -cp phonemic-analysis-0.4.2.jar io.github.speechchemistry.BfeppForTwoWordsCli "t o" "p o"`
-
-Note that in windows power shell you need to force it to use UTF-8 encoding e.g.
-
-`java "-Dfile.encoding=utf8" -cp phonemic-analysis-0.4.2.jar io.github.speechchemistry.BfeppForTwoWordsCli "t o" "p o"`
 
 ## Known Issues
 
