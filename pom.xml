@@ -46,7 +46,7 @@
            <configuration>
              <transformers>
                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                 <mainClass>io.github.speechchemistry.BatchFindAndReplaceCli</mainClass>
+                 <mainClass>io.github.speechchemistry.BfeppForTwoWordsCli</mainClass>
                </transformer>
               </transformers>
             </configuration>
