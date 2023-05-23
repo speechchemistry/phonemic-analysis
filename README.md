@@ -4,7 +4,7 @@ This repository contains software related to my PhD "Machine-assisted phonemic a
 
 ## Prerequisites
 
-This tool requires Java to already installed. For example, for Windows you could download Amazon Corretto 11 directly from https://corretto.aws/downloads/latest/amazon-corretto-11-x64-windows-jdk.msi
+This tool requires Java to be already installed. For example, for Windows you could download Amazon Corretto 11 from https://corretto.aws/downloads/latest/amazon-corretto-11-x64-windows-jdk.msi (immediate download).
 
 ## Installation
 
@@ -28,6 +28,6 @@ If your Unicode text files contain the UTF-8 preamble (also know as the UTF-8 BO
 
 I'm grateful to :
 
-- Bruce Hayes who gave me permission to use the data from his [feature spreadsheet](https://linguistics.ucla.edu/people/hayes/IP/#features)
+- Bruce Hayes who gave me permission to use the data from [his feature spreadsheet](https://linguistics.ucla.edu/people/hayes/IP/#features)
 - Dan Ellis who made [his Dynamic Time Warp (DTW) algorithm](https://www.ee.columbia.edu/~dpwe/resources/matlab/dtw/) available as open source
 - Steven Moran and Daniel McCloy who produced the open source [Phoible](https://phoible.org/) data
