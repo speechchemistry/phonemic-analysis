@@ -23,3 +23,11 @@ Note that in windows power shell you need to force it to use UTF-8 encoding e.g.
 ## Known Issues
 
 If your Unicode text files contain the UTF-8 preamble (also know as the UTF-8 BOM) it can sometimes cause problems with the software. 
+
+## Acknowledgements
+
+I'm grateful to :
+
+- Bruce Hayes who gave me permission to use the data from his [feature spreadsheet](https://linguistics.ucla.edu/people/hayes/IP/#features)
+- Dan Ellis who made [his Dynamic Time Warp (DTW) algorithm](https://www.ee.columbia.edu/~dpwe/resources/matlab/dtw/) available as open source
+- Steven Moran and Daniel McCloy who produced the open source [Phoible](https://phoible.org/) data
