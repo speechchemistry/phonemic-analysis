@@ -26,7 +26,7 @@ The output should be:
 
 This shows that the binary feature edits per phone (BFEPP) score is 0.5. There is one binary feature difference between [t] and [d] which is a change from -voice to +voice. There is no change in binary feature for the vowel. So overall the BFEPP score is 0.5.
 
-You can also get some simple help: 
+You can also get some simple help (example from Linux): 
 
 ```
 java -cp phonemic-analysis-0.5.jar io.github.speechchemistry.BfeppForTwoWordsCli --help
