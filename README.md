@@ -26,6 +26,19 @@ The output should be:
 
 This shows that the binary feature edits per phone (BFEPP) score is 0.5. There is one binary feature difference between [t] and [d] which is a change from -voice to +voice. There is no change in binary feature for the vowel. So overall the BFEPP score is 0.5.
 
+You can also get some simple help: 
+
+```
+java -cp phonemic-analysis-0.5.jar io.github.speechchemistry.BfeppForTwoWordsCli --help
+Usage: BfeppForTwoWordsCli [-hV] [-f=<feature_framework>] word1 word2
+      word1       Word 1 phonetic transcription in IPA (no tie bars)
+      word2       Word 2 phonetic transcription in IPA (no tie bars)
+  -f, --feature-framework=<feature_framework>
+                  Feature framework to use: phoible (default) or hayes
+  -h, --help      Show this help message and exit.
+  -V, --version   Print version information and exit.
+```
+
 ## Known Issues
 
 If your Unicode text files contain the UTF-8 preamble (also know as the UTF-8 BOM) it can sometimes cause problems with the software. 
