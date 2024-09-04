@@ -50,11 +50,7 @@ public class BfeppForTwoWordsCliTest
         int lengthOfWord2 = word2_nfc.length() - word2_nfc.replaceAll(" ", "").length() + 1;
         // to calculate BFEPP we divide by the longest string (see Kempton(2012) p65)
         double bfepp = 0;
-        if (lengthOfWord1 > lengthOfWord2) {
-            bfepp = totalFeatureErrors / lengthOfWord1;
-        } else {
-            bfepp = totalFeatureErrors / lengthOfWord2;
-        }
+        bfepp = totalFeatureErrors / lengthOfWord2;
         assertEquals(bfepp,2.75,0.1);
     }
 }
