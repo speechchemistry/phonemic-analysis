@@ -28,9 +28,7 @@ public class BfeppForTwoWordsCli implements Callable{
  
     @Parameters(paramLabel = "word1", description = "Word 1 phonetic transcription in IPA (no tie bars)")
     String word1;
-    @Parameters(paramLabel = "word2", description = "Word 2 phonetic transcription in IPA (no tie bars)."+ 
-                "this should be the reference transcription / ground-truth. If there is no reference transcription"+ 
-                "then this should be the longest transcription")
+    @Parameters(paramLabel = "word2", description = "Word 2 phonetic transcription in IPA (no tie bars). This should be the reference transcription / ground-truth. If there is no reference transcription then this should be the longest transcription")
     String word2;
     @Option(names = { "-f", "--feature-framework" }, defaultValue = "phoible", description = "Feature framework to use: phoible (default) or hayes")
     String feature_framework = "phoible";
