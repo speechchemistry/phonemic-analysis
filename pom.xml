@@ -6,7 +6,7 @@
 
   <groupId>io.github.speechchemistry</groupId>
   <artifactId>phonemic-analysis</artifactId>
-  <version>0.5</version>
+  <version>0.6</version>
 
   <name>phonemic-analysis</name>
   <url>https://github.com/speechchemistry/phonemic-analysis</url>
