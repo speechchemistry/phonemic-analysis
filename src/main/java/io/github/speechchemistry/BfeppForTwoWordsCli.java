@@ -72,7 +72,7 @@ public class BfeppForTwoWordsCli implements Callable{
         // most accurate way to calculate number of phones is to count the spaces and add 1
         int lengthOfWord1 = word1_nfc.length() - word1_nfc.replaceAll(" ", "").length() +1;
         int lengthOfWord2 = word2_nfc.length() - word2_nfc.replaceAll(" ", "").length() +1;
-        // to calculate BFEPP we divide by the longest string (see Kempton(2012) p65)
+        // to calculate BFEPP we divide by the longest string - see Kempton(2012,p56)
         double bfepp = 0;
         if (lengthOfWord1>lengthOfWord2) {
                 bfepp = totalFeatureErrors/lengthOfWord1;
