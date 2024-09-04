@@ -28,7 +28,9 @@ public class BfeppForTwoWordsCli implements Callable{
  
     @Parameters(paramLabel = "word1", description = "Word 1 phonetic transcription in IPA (no tie bars)")
     String word1;
-    @Parameters(paramLabel = "word2", description = "Word 2 phonetic transcription in IPA (no tie bars)")
+    @Parameters(paramLabel = "word2", description = "Word 2 phonetic transcription in IPA (no tie bars)."+ 
+                "this should be the reference transcription / ground-truth. If there is no reference transcription"+ 
+                "then this should be the longest transcription")
     String word2;
     @Option(names = { "-f", "--feature-framework" }, defaultValue = "phoible", description = "Feature framework to use: phoible (default) or hayes")
     String feature_framework = "phoible";
@@ -72,13 +74,11 @@ public class BfeppForTwoWordsCli implements Callable{
         // most accurate way to calculate number of phones is to count the spaces and add 1
         int lengthOfWord1 = word1_nfc.length() - word1_nfc.replaceAll(" ", "").length() +1;
         int lengthOfWord2 = word2_nfc.length() - word2_nfc.replaceAll(" ", "").length() +1;
-        // to calculate BFEPP we divide by the longest string - see Kempton(2012,p56)
+        // to calculate BFEPP we divide by the reference string (Kempton 2012, p69) which 
+        // should be the second string in this case. If there is no reference string the 
+        // second string should be longest string (Kempton 2012, p56)
         double bfepp = 0;
-        if (lengthOfWord1>lengthOfWord2) {
-                bfepp = totalFeatureErrors/lengthOfWord1;
-        } else {
-                bfepp = totalFeatureErrors/lengthOfWord2; 
-        }       
+        bfepp = totalFeatureErrors/lengthOfWord2;  
         System.out.println(word1_nfc+"\t"+word2_nfc+"\t"+bfepp);
         return 0;
     }
