@@ -4,7 +4,7 @@ This repository contains software related to my PhD [Machine-assisted phonemic a
 
 ## Prerequisites
 
-This tool requires Java to be already installed. For example, for Windows you could download Amazon Corretto 11 from https://corretto.aws/downloads/latest/amazon-corretto-11-x64-windows-jdk.msi (immediate download).
+This tool requires Java runtime environment. For example, for Windows you could download Amazon Corretto.
 
 ## Installation
 
